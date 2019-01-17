@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table" *ngIf="orderList">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Number</th>
+            <th>Order Date</th>
+            <th>Is Processed</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orderList.orders">
+            <th>{{order.id}}</th>
+            <th>{{order.number}}</th>
+            <th>{{order.orderDate}}</th>
+            <th>{{order.processed}}</th>
+            <th><a routerLink="/orders/{{order.id}}">Details</a></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

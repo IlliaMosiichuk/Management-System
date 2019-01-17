@@ -1,0 +1,62 @@
+<div class="container" *ngIf="order">
+  <div class="row mt-5">
+    <h3>Order information:</h3>
+    <div class="col-md-12">
+      <div class="ml-3">
+        Number : {{order.number}}
+        <br>
+        Order Date: {{order.orderDate}}
+      </div>
+      
+      <h3>Total:</h3>
+      <div class="ml-3">
+        Sum: {{order.total.sum}}
+      </div>
+
+      <h3>Addresses:</h3>
+      <div>
+        <ul>
+          <li *ngFor="let address of order.addresses">
+            Type: {{address.type == 0 ? "Billing" : "Delivery"}}; Email: {{address.email}}
+          </li>
+        </ul>
+      </div>
+
+      <h3>Articles:</h3>
+      <div>
+        <ul>
+          <li *ngFor="let article of order.articles">Article Number: {{article.number}}</li>
+        </ul>
+      </div>
+
+      <h3>Payments:</h3>
+      <div>
+        <ul>
+          <li *ngFor="let payment of order.payments">Amount: {{payment.amount}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-6">
+      <h3>Edit order</h3>
+      <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+          <div class="form-group mt-3">
+              <label for="username">Reference</label>
+              <input type="text" formControlName="reference" class="form-control" />
+          </div>
+          <div class="form-group mt-3">
+              <label for="username">Tracking Number</label>
+              <input type="text" formControlName="trackingNumber" class="form-control" />
+          </div>
+          <div class="form-group mt-3">
+              <input type="checkbox" formControlName="processed" class="form-check-input" id="processedCheck">
+              <label class="form-check-label" for="processedCheck">Processed</label>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary">Save</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
